@@ -51,7 +51,8 @@ spec:
         - containerPort: 3000 
         envFrom:
         - secretRef:
-            name: api-env-secret 
+            name: api-env-secret
+```
 
 Se crea con 2 Pods (instancias) y se escoge la imagen que está en un repositorio en Docker Hub de la aplicación que se ha venido trabajando durante todo el semestre (sebas807/dev_ops:test), con el puerto que se expone en esa aplicación (3000), y con un secret llamado api-env-secret que se configura de la siguiente manera desde la consola de Google Cloud SDK Shell:
 
@@ -78,6 +79,7 @@ spec:
       port: 80
       targetPort: 3000
   type: LoadBalancer
+```
 
 Podemos ver que el targetPort es el mismo puerto que se usa en el contenedor al hacer el Deployment (containerPort).
 Luego aplicamos el archivo .yaml con el comando: kubectl apply -f service.yaml. Y podemos ejecutar el comando: kubectl get services para comprobar que todo salió correctamente, nos mostrará el servicio creado con el nombre mi-api-service y una EXTERNAL-IP que podemos usar para acceder y probar la API desde un navegador o Postman, siguiendo la ruta: http://EXTERNAL-IP/api/v2/leagues.
