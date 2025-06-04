@@ -29,6 +29,7 @@ Se verifica la conexión al clúster mediante: kubectl get nodes, y así podremo
 
 Para este paso primero se crea un archivo YAML para el Deployment (deployment.yaml), el cual es el siguiente:
 
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -64,6 +65,7 @@ Y para verificar que la aplicación se está ejecutando correctamente en cada po
 
 Ahora se procede a exponer el Deployment como un Servicio, para esto se crea otro archivo .yaml (service.yaml) con lo siguiente:
 
+```yaml
 apiVersion: v1
 kind: Service
 metadata:
