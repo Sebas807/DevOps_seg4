@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mi-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mi-api
+  template:
+    metadata:
+      labels:
+        app: mi-api
+    spec:
+      containers:
+      - name: mi-api
+        image: sebas807/dev_ops:test
+        ports:
+        - containerPort: 3000 
+        envFrom:
+        - secretRef:
+            name: api-env-secret 
